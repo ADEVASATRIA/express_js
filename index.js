@@ -3,10 +3,12 @@ const app = express();  //object of express
 
 app.set('view engine', 'ejs');
 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Menyajikan file statis dari direktori "views"
 app.use(express.static('views'));
-
-
 
 //Route Aplikasi
 app.get('/pendaftaran', (req, res) => {
@@ -15,7 +17,9 @@ app.get('/pendaftaran', (req, res) => {
 });
 
 app.post('/pendaftaran', (req, res) => {
-    res.send('Pendaftaran berhasil menggunakan metode post');
+    // console.log(req.body);
+    const { nama, umur, email, tempat_tinggal } = req.body;
+    res.send(`Nama: ${nama} Umur: ${umur} Email: ${email} Tempat Tinggal: ${tempat_tinggal}`);
 });
 
 //Startup Server 
