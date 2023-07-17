@@ -9,10 +9,14 @@ app.use(express.static('views'));
 
 
 //Route Aplikasi
-app.get('/home', (req, res) => {
-    res.render('home');    
+app.get('/pendaftaran', (req, res) => {
+    res.render('pendaftaran');
+    res.send('Get Method berhasil');
 });
 
+app.post('/pendaftaran', (req, res) => {
+    res.send('Pendaftaran berhasil menggunakan metode post');
+});
 
 //Startup Server 
 app.listen(8080, () => {
